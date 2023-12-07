@@ -1,0 +1,81 @@
+@import '../../assets/scss/main.scss';
+
+.request {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vh;
+  min-height: 100vh;
+
+  &Form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+    padding: 32px;
+
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 1px 8px 20px 0px rgba(0, 0, 0, 0.15);
+
+    &__title {
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &__col {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+
+      &Big_input {
+        border-radius: 12px;
+        border: 1px solid #9fa6b2;
+        width: 520px;
+        height: 93px;
+        padding: 16px;
+
+        color: #27272a;
+        font-size: 14px;
+        font-weight: 400;
+
+        resize: none;
+
+        &::placeholder {
+          color: #9fa6b2;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &Input {
+        border-radius: 12px;
+        border: 1px solid #9fa6b2;
+        width: 520px;
+        padding: 16px;
+
+        color: #27272a;
+        font-size: 14px;
+        font-weight: 400;
+
+        &::placeholder {
+          color: #9fa6b2;
+        }
+      }
+    }
+
+    &__btn {
+      border-radius: 12px;
+      background: #4256d0;
+      width: 304px;
+      height: 48px;
+
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}

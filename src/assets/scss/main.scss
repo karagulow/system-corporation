@@ -1,0 +1,14 @@
+@import './reset';
+
+body {
+  background-color: #fff;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#root {
+  min-width: 100vh;
+  min-height: 100vh;
+}
