@@ -41,6 +41,7 @@
         font-weight: 400;
 
         resize: none;
+        transition: all 0.1s ease-in-out;
 
         &::placeholder {
           color: #9fa6b2;
@@ -48,6 +49,7 @@
 
         &:focus {
           outline: none;
+          border: 1px solid #27272a;
         }
       }
 
@@ -60,9 +62,15 @@
         color: #27272a;
         font-size: 14px;
         font-weight: 400;
+        transition: all 0.1s ease-in-out;
 
         &::placeholder {
           color: #9fa6b2;
+        }
+
+        &:focus {
+          outline: none;
+          border: 1px solid #27272a;
         }
       }
     }
@@ -76,6 +84,11 @@
       color: #fff;
       font-size: 18px;
       font-weight: 400;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #3c4dc0;
+      }
     }
   }
 }

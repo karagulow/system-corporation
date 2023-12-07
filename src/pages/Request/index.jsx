@@ -21,7 +21,9 @@ export const Request = () => {
             placeholder="Как к вам обращаться?"
           />
         </div>
-        <button className={styles.requestForm__btn}>Оставить заявку</button>
+        <button type="button" className={styles.requestForm__btn}>
+          Оставить заявку
+        </button>
       </form>
     </div>
   );
