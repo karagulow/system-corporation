@@ -1,0 +1,125 @@
+@import '../../assets/scss/main.scss';
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vh;
+  min-height: 100vh;
+
+  &Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 520px;
+
+    &__logo {
+      width: 202px;
+      height: 52px;
+      margin-bottom: 20px;
+    }
+
+    &__title {
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    input {
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: 1px solid #9fa6b2;
+      width: 100%;
+
+      color: #27272a;
+      font-size: 14px;
+      font-weight: 400;
+
+      transition: all 0.1s ease-in-out;
+
+      &::placeholder {
+        color: #9fa6b2;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid #5c73db;
+      }
+    }
+
+    &__email {
+      padding: 16px;
+    }
+
+    &__pw {
+      width: 100%;
+      position: relative;
+    }
+
+    &__eye {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 16px;
+      bottom: 35px;
+      right: 16px;
+      cursor: pointer;
+    }
+
+    &__password {
+      padding: 16px 40px 16px 16px;
+    }
+
+    &__forgot_password {
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__btn {
+      margin-bottom: 30px;
+      border-radius: 12px;
+      background: #4256d0;
+      width: 100%;
+      height: 48px;
+
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #3c4dc0;
+      }
+    }
+
+    &__request {
+      display: flex;
+      border-radius: 12px;
+      border: 1px solid #4256d0;
+      background: #fff;
+      width: 304px;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+
+      color: #4256d0;
+      font-size: 18px;
+      font-weight: 400;
+
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #4256d0;
+        color: #fff;
+      }
+    }
+  }
+}
