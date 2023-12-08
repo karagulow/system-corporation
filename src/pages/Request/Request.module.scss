@@ -1,11 +1,35 @@
 @import '../../assets/scss/main.scss';
 
 .request {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 100vh;
   min-height: 100vh;
+
+  &Back {
+    position: absolute;
+    top: calc(50vh - 270px);
+    width: 584px;
+
+    &__btn {
+      border-radius: 12px;
+      border: 1px solid #4256d0;
+      padding: 10px 30px;
+
+      color: #4256d0;
+      font-size: 18px;
+      font-weight: 400;
+
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #4256d0;
+        color: #fff;
+      }
+    }
+  }
 
   &Form {
     display: flex;
