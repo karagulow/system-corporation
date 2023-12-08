@@ -20,7 +20,7 @@ export const Login = () => {
 
   return (
     <div className={styles.login}>
-      <div className={styles.loginForm}>
+      <form className={styles.loginForm}>
         <div className={styles.loginForm__logo}>
           <svg
             width="204"
@@ -154,14 +154,17 @@ export const Login = () => {
             )}
           </div>
         </div>
-        <Link className={styles.loginForm__forgot_password}>
+        <Link
+          to="/password-reset"
+          className={styles.loginForm__forgot_password}
+        >
           Забыли пароль?
         </Link>
         <button className={styles.loginForm__btn}>Авторизоваться</button>
         <Link to="/request" className={styles.loginForm__request}>
           Оставить заявку
         </Link>
-      </div>
+      </form>
     </div>
   );
 };
