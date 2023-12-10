@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import styles from './PasswordReset.module.scss';
 
@@ -45,7 +46,7 @@ export const PasswordReset = () => {
   return (
     <div className={styles.reset}>
       <div className={styles.resetBlock}>
-        <div className={styles.resetBlock__logo}>
+        <Link to="/" className={styles.resetBlock__logo}>
           <svg
             width="204"
             height="52"
@@ -128,7 +129,7 @@ export const PasswordReset = () => {
               fill="#4256D0"
             />
           </svg>
-        </div>
+        </Link>
         <h3 className={styles.resetBlock__title}>Восстановление пароля</h3>
         {isEmail && (
           <form className={styles.resetBlock__form}>

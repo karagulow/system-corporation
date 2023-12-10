@@ -1,0 +1,71 @@
+@import '../../assets/scss/main.scss';
+
+.active {
+  opacity: 1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #131c55;
+  width: 256px;
+  height: 100vh;
+
+  &Logo {
+    margin: 0 auto;
+    margin-top: 28px;
+    margin-bottom: 60px;
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 0 20px;
+    margin-bottom: 60px;
+
+    &__item {
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 15px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        p {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      &Link {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &Exit {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    padding: 0 20px;
+
+    p {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
