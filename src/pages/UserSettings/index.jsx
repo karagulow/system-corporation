@@ -3,12 +3,14 @@ import styles from './UserSettings.module.scss';
 export const UserSettings = () => {
   return (
     <div className={styles.settings}>
-      <h5 className={styles.settingsTitle}>Настройки</h5>
+      <div className={styles.settingsTop}>
+        <h5 className={styles.settingsTop__title}>Настройки</h5>
+      </div>
       <div className={styles.settingsContent}>
         <form className={styles.settingsContent__form}>
           <input
             type="text"
-            value="Ranuka"
+            value="Ivan"
             placeholder="Логин"
             className={styles.settingsContent__formInput}
           />
@@ -20,7 +22,7 @@ export const UserSettings = () => {
         <form className={styles.settingsContent__form}>
           <input
             type="password"
-            value="Ranuka123"
+            value="ivanushka"
             placeholder="Пароль"
             className={styles.settingsContent__formInput}
           />
@@ -32,7 +34,7 @@ export const UserSettings = () => {
         <form className={styles.settingsContent__form}>
           <input
             type="text"
-            value="qwerty123@mail.ru"
+            value="ivan@mail.ru"
             placeholder="Электронная почта"
             className={styles.settingsContent__formInput}
           />

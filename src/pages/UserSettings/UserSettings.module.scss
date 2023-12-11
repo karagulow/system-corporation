@@ -1,20 +1,33 @@
 @import '../../assets/scss/main.scss';
 
 .settings {
+  position: absolute;
+  left: 256px;
+
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   background-color: #fafafa;
   width: calc(100% - 256px);
-  height: auto;
+  min-height: 100vh;
+  max-height: auto;
 
-  &Title {
+  &Top {
+    position: fixed;
+    width: calc(100% - 256px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: #fff;
-    padding: 28px 40px;
+    padding: 0 40px;
+    height: 80px;
 
-    color: #131c55;
-    font-size: 16px;
-    font-weight: 500;
+    &__title {
+      color: #131c55;
+      font-size: 16px;
+      font-weight: 500;
+    }
   }
 
   &Content {
@@ -24,7 +37,7 @@
     background-color: #fff;
     border-radius: 12px;
     padding: 32px;
-    margin: 0 40px;
+    margin: 100px 40px 40px;
 
     &__form {
       display: flex;
