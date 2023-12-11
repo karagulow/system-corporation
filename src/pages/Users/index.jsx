@@ -1,5 +1,4 @@
 import styles from './Users.module.scss';
-
 import usersData from '../../assets/data/users.json';
 
 import { Search } from '../../components/Search';

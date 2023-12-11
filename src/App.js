@@ -8,6 +8,7 @@ import { PasswordReset } from './pages/PasswordReset';
 import { MonitoringSystem } from './pages/MonitoringSystem';
 import { UserSettings } from './pages/UserSettings';
 import { Users } from './pages/Users';
+import { Staff } from './pages/Staff';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route path="monitoring" element={<MonitoringSystem />} />
         <Route path="users" element={<Users />} />
+        <Route path="staff" element={<Staff />} />
         <Route path="settings" element={<UserSettings />} />
       </Route>
     </Routes>
