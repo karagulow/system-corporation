@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Иванов Илья Максимович",
+    "passport": "6027 115522",
+    "phone": 89885554466,
+    "vin": "X7LLSRB1HAH548712",
+    "car": "Opel Astra",
+    "car_color": "Белый",
+    "car_number": "т273нт161",
+    "check_in": "8:26",
+    "check_out": "13:53"
+  },
+  {
+    "id": 87645,
+    "name": "Петров Андрей Николаевич",
+    "passport": "4032 990087",
+    "phone": 89997776655,
+    "vin": "Y8KJH5G4FDL325689",
+    "car": "Toyota Camry",
+    "car_color": "Белый",
+    "car_number": "м123мт161",
+    "check_in": "9:47",
+    "check_out": "11:24"
+  },
+  {
+    "id": 65432,
+    "name": "Смирнова Елена Сергеевна",
+    "passport": "7081 763212",
+    "phone": 89771234567,
+    "vin": "Z9POQ2F7KJR876543",
+    "car": "BMW X5",
+    "car_color": "Черный",
+    "car_number": "о321он761",
+    "check_in": "8:47",
+    "check_out": "16:44"
+  }
+]

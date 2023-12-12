@@ -1,0 +1,18 @@
+@import '../../assets/scss/main.scss';
+
+.logs_item {
+  &List {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    justify-content: space-between;
+
+    &__item {
+      color: #27272a;
+      font-size: 14px;
+      font-weight: 400;
+      width: 108px;
+      overflow-wrap: break-word;
+    }
+  }
+}
