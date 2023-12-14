@@ -86,6 +86,10 @@
     }
 
     &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       margin-bottom: 30px;
       border-radius: 12px;
       background: #4256d0;

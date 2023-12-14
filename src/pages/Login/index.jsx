@@ -160,7 +160,9 @@ export const Login = () => {
         >
           Забыли пароль?
         </Link>
-        <button className={styles.loginForm__btn}>Авторизоваться</button>
+        <Link to="/monitoring" className={styles.loginForm__btn}>
+          Авторизоваться
+        </Link>
         <Link to="/request" className={styles.loginForm__request}>
           Оставить заявку
         </Link>

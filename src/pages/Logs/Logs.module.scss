@@ -29,6 +29,34 @@
       font-weight: 500;
     }
 
+    &__filter {
+      display: flex;
+      flex-direction: row;
+      column-gap: 20px;
+      align-items: center;
+
+      svg {
+        cursor: pointer;
+      }
+
+      &Btns {
+        display: flex;
+        flex-direction: row;
+        column-gap: 20px;
+
+        &__item {
+          border-radius: 12px;
+          background: #4256d0;
+          width: 128px;
+          height: 40px;
+
+          color: #fff;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
     &__right {
       display: flex;
       flex-direction: row;

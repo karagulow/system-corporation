@@ -1,11 +1,17 @@
+import { useState } from 'react';
+
 import styles from './Users.module.scss';
 import usersData from '../../assets/data/users.json';
 
 import { Search } from '../../components/Search';
 import { AddUserBtn } from '../../components/AddUserBtn';
 import { UserItem } from '../../components/UserItem';
+import { AddUser } from '../../components/AddUser';
 
 export const Users = () => {
+  const [addUserFormOpen, setAddUserFormOpen] = useState(false);
+  console.log(addUserFormOpen);
+
   return (
     <div className={styles.users}>
       <div className={styles.usersTop}>
@@ -13,6 +19,7 @@ export const Users = () => {
         <div className={styles.usersTop__right}>
           <Search />
           <AddUserBtn />
+          {addUserFormOpen && <AddUser />}
         </div>
       </div>
       <div className={styles.usersContent}>
