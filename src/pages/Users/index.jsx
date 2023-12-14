@@ -10,7 +10,10 @@ import { AddUser } from '../../components/AddUser';
 
 export const Users = () => {
   const [addUserFormOpen, setAddUserFormOpen] = useState(false);
-  console.log(addUserFormOpen);
+
+  addUserFormOpen
+    ? (document.body.style.overflow = 'hidden')
+    : (document.body.style.overflow = 'auto');
 
   return (
     <div className={styles.users}>
@@ -18,8 +21,10 @@ export const Users = () => {
         <h5 className={styles.usersTop__title}>Пользователи</h5>
         <div className={styles.usersTop__right}>
           <Search />
-          <AddUserBtn />
-          {addUserFormOpen && <AddUser />}
+          <AddUserBtn setAddUserFormOpen={setAddUserFormOpen} />
+          {addUserFormOpen && (
+            <AddUser setAddUserFormOpen={setAddUserFormOpen} />
+          )}
         </div>
       </div>
       <div className={styles.usersContent}>

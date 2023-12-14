@@ -1,8 +1,14 @@
 import styles from './AddUserBtn.module.scss';
 
-export const AddUserBtn = () => {
+export const AddUserBtn = ({ setAddUserFormOpen }) => {
   return (
-    <div className={styles.btn}>
+    <div
+      className={styles.btn}
+      onClick={() => {
+        setAddUserFormOpen(true);
+        console.log('чтотонетак');
+      }}
+    >
       <svg
         width="24"
         height="24"
