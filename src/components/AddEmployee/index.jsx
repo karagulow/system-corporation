@@ -1,8 +1,8 @@
 import { IMaskInput } from 'react-imask';
 
-import styles from './AddUser.module.scss';
+import styles from './AddEmployee.module.scss';
 
-export const AddUser = ({ setAddUserFormOpen }) => {
+export const AddEmployee = ({ setAddUserFormOpen }) => {
   const passportMask = '0000 000000';
   const phoneMask = '+{7}(000)000-00-00';
 
@@ -31,7 +31,7 @@ export const AddUser = ({ setAddUserFormOpen }) => {
             />
           </svg>
         </div>
-        <h3 className={styles.add_userForm__title}>Данные о пользователе</h3>
+        <h3 className={styles.add_userForm__title}>Данные о сотруднике</h3>
         <div className={styles.add_userForm__data}>
           <div className={styles.add_userForm__dataImg}>
             <svg
@@ -99,63 +99,16 @@ export const AddUser = ({ setAddUserFormOpen }) => {
               placeholder="Срок действия пропуска"
               required
             />
-          </div>
-        </div>
-        <h3 className={styles.add_userForm__title}>Данные об автомобиле</h3>
-        <div className={styles.add_userForm__data}>
-          <div className={styles.add_userForm__dataImg}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.5 21L19.5 21C20.3284 21 21 20.3284 21 19.5L21 4.5C21 3.67157 20.3284 3 19.5 3L4.5 3C3.67158 3 3 3.67157 3 4.5L3 19.5C3 20.3284 3.67157 21 4.5 21Z"
-                stroke="white"
-                stroke-width="2"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M12 16L12 8"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M16 12L8 12"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-          <div className={styles.add_userForm__dataItems}>
             <IMaskInput
               className={styles.add_userForm__dataItems__input}
               type="text"
-              placeholder="VIN номер"
+              placeholder="Должность"
               required
             />
             <IMaskInput
               className={styles.add_userForm__dataItems__input}
               type="text"
-              placeholder="Марка автомобиля"
-              required
-            />
-            <IMaskInput
-              className={styles.add_userForm__dataItems__input}
-              type="text"
-              placeholder="Цвет автомобиля"
-              required
-            />
-            <IMaskInput
-              className={styles.add_userForm__dataItems__input}
-              type="text"
-              placeholder="Номер автомобиля"
+              placeholder="График работы"
               required
             />
           </div>

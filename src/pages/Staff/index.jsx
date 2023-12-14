@@ -1,18 +1,30 @@
+import { useState } from 'react';
+
 import styles from './Staff.module.scss';
 import staffData from '../../assets/data/staff.json';
 
 import { Search } from '../../components/Search';
 import { AddUserBtn } from '../../components/AddUserBtn';
 import { StaffItem } from '../../components/StaffItem';
+import { AddEmployee } from '../../components/AddEmployee';
 
 export const Staff = () => {
+  const [addUserFormOpen, setAddUserFormOpen] = useState(false);
+
+  addUserFormOpen
+    ? (document.body.style.overflow = 'hidden')
+    : (document.body.style.overflow = 'auto');
+
   return (
     <div className={styles.staff}>
       <div className={styles.staffTop}>
         <h5 className={styles.staffTop__title}>Сотрудники</h5>
         <div className={styles.staffTop__right}>
           <Search />
-          <AddUserBtn />
+          <AddUserBtn setAddUserFormOpen={setAddUserFormOpen} />
+          {addUserFormOpen && (
+            <AddEmployee setAddUserFormOpen={setAddUserFormOpen} />
+          )}
         </div>
       </div>
       <div className={styles.staffContent}>
