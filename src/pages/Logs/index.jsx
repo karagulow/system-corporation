@@ -6,6 +6,7 @@ import logsData from '../../assets/data/logs.json';
 import { Search } from '../../components/Search';
 import { LogsItem } from '../../components/LogsItem';
 
+// Search start
 const filterLogs = (searchText, listOfLogs) => {
   if (!searchText) {
     return listOfLogs;
@@ -15,6 +16,52 @@ const filterLogs = (searchText, listOfLogs) => {
     name.toLowerCase().includes(searchText.toLowerCase())
   );
 };
+// Search end
+
+// CategorySort start
+const sortLogs = (type, data) => {
+  if (type.sortProperty === 'name') {
+    data.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  } else if (type.sortProperty === 'check_in') {
+    data.sort((a, b) => {
+      const nameA = a.check_in.toLowerCase();
+      const nameB = b.check_in.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  } else if (type.sortProperty === 'check_out') {
+    data.sort((a, b) => {
+      const nameA = a.check_out.toLowerCase();
+      const nameB = b.check_out.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+};
+// CategorySort end
 
 export const Logs = () => {
   // Search start
@@ -30,6 +77,23 @@ export const Logs = () => {
     return () => clearTimeout(Debounce);
   }, [searchTerm]);
   // Search end
+
+  // CategorySort start
+  const [sortType, setSortType] = useState({
+    name: 'По умолчанию',
+    sortProperty: 'default',
+  });
+
+  const sortList = [
+    { name: 'По фио', sortProperty: 'name' },
+    { name: 'По дате заезда', sortProperty: 'check_in' },
+    { name: 'По дате выезда', sortProperty: 'check_out' },
+  ];
+
+  useEffect(() => {
+    sortLogs(sortType, logsList);
+  });
+  // CategorySort end
 
   return (
     <div className={styles.logs}>
@@ -52,13 +116,17 @@ export const Logs = () => {
             />
           </svg>
           <div className={styles.logsTop__filterBtns}>
-            <button className={styles.logsTop__filterBtns__item}>По фио</button>
-            <button className={styles.logsTop__filterBtns__item}>
-              По дате заезда
-            </button>
-            <button className={styles.logsTop__filterBtns__item}>
-              По дате выезда
-            </button>
+            {sortList.map((obj, index) => {
+              return (
+                <button
+                  key={index}
+                  className={styles.logsTop__filterBtns__item}
+                  onClick={() => setSortType(obj)}
+                >
+                  {obj.name}
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className={styles.logsTop__right}>
