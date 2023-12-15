@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Staff.module.scss';
 import staffData from '../../assets/data/staff.json';
@@ -8,6 +8,16 @@ import { AddUserBtn } from '../../components/AddUserBtn';
 import { StaffItem } from '../../components/StaffItem';
 import { AddEmployee } from '../../components/AddEmployee';
 
+const filterStaff = (searchText, listOfStaff) => {
+  if (!searchText) {
+    return listOfStaff;
+  }
+
+  return listOfStaff.filter(({ name }) =>
+    name.toLowerCase().includes(searchText.toLowerCase())
+  );
+};
+
 export const Staff = () => {
   const [addUserFormOpen, setAddUserFormOpen] = useState(false);
 
@@ -15,12 +25,26 @@ export const Staff = () => {
     ? (document.body.style.overflow = 'hidden')
     : (document.body.style.overflow = 'auto');
 
+  // Search start
+  const [staffList, setStaffList] = useState(staffData);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredStaff = filterStaff(searchTerm, staffData);
+      setStaffList(filteredStaff);
+    }, 300);
+
+    return () => clearTimeout(Debounce);
+  }, [searchTerm]);
+  // Search end
+
   return (
     <div className={styles.staff}>
       <div className={styles.staffTop}>
         <h5 className={styles.staffTop__title}>Сотрудники</h5>
         <div className={styles.staffTop__right}>
-          <Search />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <AddUserBtn setAddUserFormOpen={setAddUserFormOpen} />
           {addUserFormOpen && (
             <AddEmployee setAddUserFormOpen={setAddUserFormOpen} />
@@ -49,9 +73,9 @@ export const Staff = () => {
             </li>
           </ul>
           <ul className={styles.staffContent__tableData}>
-            {staffData.map(person => (
+            {staffList.map((person, index) => (
               <StaffItem
-                key={person.id}
+                key={index}
                 id={person.id}
                 name={person.name}
                 passport={person.passport}

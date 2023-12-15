@@ -37,6 +37,7 @@ export const Users = () => {
 
     return () => clearTimeout(Debounce);
   }, [searchTerm]);
+  // Search end
 
   return (
     <div className={styles.users}>
