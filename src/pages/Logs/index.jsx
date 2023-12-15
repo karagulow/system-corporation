@@ -1,11 +1,36 @@
-import styles from './Logs.module.scss';
+import { useEffect, useState } from 'react';
 
+import styles from './Logs.module.scss';
 import logsData from '../../assets/data/logs.json';
 
 import { Search } from '../../components/Search';
 import { LogsItem } from '../../components/LogsItem';
 
+const filterLogs = (searchText, listOfLogs) => {
+  if (!searchText) {
+    return listOfLogs;
+  }
+
+  return listOfLogs.filter(({ name }) =>
+    name.toLowerCase().includes(searchText.toLowerCase())
+  );
+};
+
 export const Logs = () => {
+  // Search start
+  const [logsList, setLogsList] = useState(logsData);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredLogs = filterLogs(searchTerm, logsData);
+      setLogsList(filteredLogs);
+    }, 300);
+
+    return () => clearTimeout(Debounce);
+  }, [searchTerm]);
+  // Search end
+
   return (
     <div className={styles.logs}>
       <div className={styles.logsTop}>
@@ -37,7 +62,7 @@ export const Logs = () => {
           </div>
         </div>
         <div className={styles.logsTop__right}>
-          <Search />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
       </div>
       <div className={styles.logsContent}>
@@ -64,9 +89,9 @@ export const Logs = () => {
             </li>
           </ul>
           <ul className={styles.logsContent__tableData}>
-            {logsData.map(log => (
+            {logsList.map((log, index) => (
               <LogsItem
-                key={log.id}
+                key={index}
                 name={log.name}
                 passport={log.passport}
                 phone={log.phone}
