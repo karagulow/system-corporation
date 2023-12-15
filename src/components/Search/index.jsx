@@ -1,6 +1,6 @@
 import styles from './Search.module.scss';
 
-export const Search = () => {
+export const Search = ({ searchTerm, setSearchTerm }) => {
   return (
     <label for="search" className={styles.search}>
       <svg
@@ -22,7 +22,13 @@ export const Search = () => {
           stroke-width="2.66669"
         />
       </svg>
-      <input type="text" id="search" placeholder="Поиск" />
+      <input
+        type="text"
+        id="search"
+        placeholder="Поиск"
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+      />
     </label>
   );
 };

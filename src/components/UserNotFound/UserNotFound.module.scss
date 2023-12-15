@@ -1,0 +1,87 @@
+@import '../../assets/scss/main.scss';
+
+.card {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 11;
+  overflow-y: hidden;
+
+  &Block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 1px 8px 20px 0px rgba(0, 0, 0, 0.15);
+
+    &__close {
+      position: absolute;
+      right: 32px;
+      cursor: pointer;
+    }
+
+    &__warning {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      column-gap: 10px;
+      margin-bottom: 30px;
+
+      &Title {
+        color: #991b1b;
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+
+    &__title {
+      margin: 0 auto;
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    &__data {
+      display: flex;
+      flex-direction: row;
+      column-gap: 30px;
+      margin-bottom: 30px;
+
+      &Img {
+        img {
+          width: 135px;
+          height: 135px;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+      }
+
+      &Items {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+
+        &__input {
+          width: 378px;
+          height: 40px;
+          padding: 0 16px;
+          border-radius: 12px;
+          border: 1px solid #9fa6b2;
+
+          color: #27272a;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

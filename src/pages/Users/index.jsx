@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Users.module.scss';
 import usersData from '../../assets/data/users.json';
@@ -8,6 +8,16 @@ import { AddUserBtn } from '../../components/AddUserBtn';
 import { UserItem } from '../../components/UserItem';
 import { AddUser } from '../../components/AddUser';
 
+const filterUsers = (searchText, listOfUsers) => {
+  if (!searchText) {
+    return listOfUsers;
+  }
+
+  return listOfUsers.filter(({ name }) =>
+    name.toLowerCase().includes(searchText.toLowerCase())
+  );
+};
+
 export const Users = () => {
   const [addUserFormOpen, setAddUserFormOpen] = useState(false);
 
@@ -15,12 +25,25 @@ export const Users = () => {
     ? (document.body.style.overflow = 'hidden')
     : (document.body.style.overflow = 'auto');
 
+  // Search start
+  const [userList, setUserList] = useState(usersData);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const Debounce = setTimeout(() => {
+      const filteredUsers = filterUsers(searchTerm, usersData);
+      setUserList(filteredUsers);
+    }, 300);
+
+    return () => clearTimeout(Debounce);
+  }, [searchTerm]);
+
   return (
     <div className={styles.users}>
       <div className={styles.usersTop}>
         <h5 className={styles.usersTop__title}>Пользователи</h5>
         <div className={styles.usersTop__right}>
-          <Search />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <AddUserBtn setAddUserFormOpen={setAddUserFormOpen} />
           {addUserFormOpen && (
             <AddUser setAddUserFormOpen={setAddUserFormOpen} />
@@ -53,9 +76,9 @@ export const Users = () => {
             </li>
           </ul>
           <ul className={styles.usersContent__tableData}>
-            {usersData.map(user => (
+            {userList.map((user, index) => (
               <UserItem
-                key={user.id}
+                key={index}
                 id={user.id}
                 name={user.name}
                 passport={user.passport}
