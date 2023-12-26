@@ -1,13 +1,28 @@
 import styles from './Login.module.scss';
 
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import {useState } from 'react';
+import supabase from '../../config/supabaseClient';
 
-export const Login = () => {
-  const [password, setPassword] = useState('');
+export const Login = ({setToken}) => {
+  const navigate = useNavigate()
+
+  const [formData,setFormData] = useState({
+    email:'',password:''
+  })
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('eyeOff');
 
+  function handleChange(event){
+    setFormData((prevFormData)=>{
+      return{
+        ...prevFormData,
+        [event.target.name]:event.target.value
+      }
+
+    })
+
+  }
   const handleToggle = () => {
     if (type === 'password') {
       setIcon('eye');
@@ -18,9 +33,29 @@ export const Login = () => {
     }
   };
 
+  async function handleSignIn(e){
+    e.preventDefault()
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password,
+          })
+
+      if (error) throw error
+      setToken(data)
+      navigate('/monitoring')
+
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <div className={styles.login}>
-      <form className={styles.loginForm}>
+      <form className={styles.loginForm}
+      onSubmit={handleSignIn}
+      >
         <div className={styles.loginForm__logo}>
           <svg
             width="204"
@@ -112,14 +147,15 @@ export const Login = () => {
           className={styles.loginForm__email}
           type="text"
           placeholder="Email"
+          name='email'
+          onChange={handleChange}
         />
         <div className={styles.loginForm__pw}>
           <input
             className={styles.loginForm__password}
             type={type}
             name="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={handleChange}
             placeholder="Пароль"
           />
 
@@ -160,9 +196,9 @@ export const Login = () => {
         >
           Забыли пароль?
         </Link>
-        <Link to="/monitoring" className={styles.loginForm__btn}>
+        <button type='submit' className={styles.loginForm__btn}>
           Авторизоваться
-        </Link>
+        </button>
         <Link to="/request" className={styles.loginForm__request}>
           Оставить заявку
         </Link>

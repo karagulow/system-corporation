@@ -3,7 +3,6 @@ import { useState } from 'react';
 import styles from './MonitoringSystem.module.scss';
 
 import camera from '../../assets/img/camera-monitoring.png';
-
 import { Pagination } from '../../components/Pagination';
 import { UserCard } from '../../components/UserCard';
 import { UserNotFound } from '../../components/UserNotFound';
