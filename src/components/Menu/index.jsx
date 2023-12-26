@@ -1,11 +1,29 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import styles from './Menu.module.scss';
+import supabase from '../../config/supabaseClient';
 
 const setActive = ({ isActive }) =>
   isActive ? styles.active : styles.menuList__itemLink;
 
 export const Menu = () => {
+  const navigate = useNavigate()
+
+  async function handleSignOut(e){
+    e.preventDefault()
+
+    try {
+        const { error } = await supabase.auth.signOut({
+          })
+
+      if (error) throw error
+      navigate('/login')
+
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <div className={styles.menu}>
       <div className={styles.menuLogo}>
@@ -248,7 +266,7 @@ export const Menu = () => {
           </NavLink>
         </li>
       </ul>
-      <Link className={styles.menuExit}>
+      <button className={styles.menuExit} onClick={handleSignOut}>
         <svg
           width="16"
           height="17"
@@ -279,7 +297,7 @@ export const Menu = () => {
           />
         </svg>
         <p>Выйти</p>
-      </Link>
+      </button>
     </div>
   );
 };

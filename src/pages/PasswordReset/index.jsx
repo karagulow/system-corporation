@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IMaskInput } from 'react-imask';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import supabase from '../../config/supabaseClient';
 
 import styles from './PasswordReset.module.scss';
 
@@ -17,6 +18,21 @@ export const PasswordReset = () => {
   const [passwordSecond, setPasswordSecond] = useState('');
   const [typeSecond, setTypeSecond] = useState('password');
   const [iconSecond, setIconSecond] = useState('eyeOff');
+
+  // async function sendFormResetPassword(e){
+  //   e.preventDefault()
+
+  //   try {
+  //       const { data, error } = await supabase.auth.resetPasswordForEmail({
+  //           email: formData.email,
+  //           password: formData.password,
+  //         })
+
+  //     if (error) throw error
+  //   } catch (error) {
+  //     alert(error)
+  //   }
+  // }
 
   const handleTogglePasswordFirst = () => {
     if (typeFirst === 'password') {
