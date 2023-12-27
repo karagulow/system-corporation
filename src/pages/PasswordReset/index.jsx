@@ -1,16 +1,11 @@
 import { useState } from 'react';
-import { IMaskInput } from 'react-imask';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import supabase from '../../config/supabaseClient';
 
 import styles from './PasswordReset.module.scss';
 
-export const PasswordReset = () => {
-  const [isEmail, setIsEmail] = useState(true);
-  const [isCode, setIsCode] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
-
+export const PasswordReset = ({ isEmail = false, isPassword = false }) => {
   const [passwordFirst, setPasswordFirst] = useState('');
   const [typeFirst, setTypeFirst] = useState('password');
   const [iconFirst, setIconFirst] = useState('eyeOff');
@@ -56,8 +51,6 @@ export const PasswordReset = () => {
 
   const incorrectPassword =
     passwordFirst !== passwordSecond && passwordSecond ? styles.incorrect : '';
-
-  const codeMask = '000';
 
   return (
     <div className={styles.reset}>
@@ -154,34 +147,7 @@ export const PasswordReset = () => {
               type="email"
               placeholder="Введите ваш email"
             />
-            <button
-              type="button"
-              className={styles.resetBlock__formBtn}
-              onClick={() => {
-                setIsEmail(false);
-                setIsCode(true);
-              }}
-            >
-              Подтвердить
-            </button>
-          </form>
-        )}
-        {isCode && (
-          <form className={styles.resetBlock__form}>
-            <IMaskInput
-              className={styles.resetBlock__formCode}
-              type="text"
-              placeholder="Введите полученный код"
-              mask={codeMask}
-            />
-            <button
-              type="button"
-              className={styles.resetBlock__formBtn}
-              onClick={() => {
-                setIsCode(false);
-                setIsPassword(true);
-              }}
-            >
+            <button type="button" className={styles.resetBlock__formBtn}>
               Подтвердить
             </button>
           </form>
@@ -283,14 +249,7 @@ export const PasswordReset = () => {
               </div>
             </div>
 
-            <button
-              type="button"
-              className={styles.resetBlock__formBtn}
-              onClick={() => {
-                setIsCode(false);
-                setIsPassword(true);
-              }}
-            >
+            <button type="button" className={styles.resetBlock__formBtn}>
               Подтвердить
             </button>
           </form>

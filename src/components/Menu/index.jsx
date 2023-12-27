@@ -7,20 +7,18 @@ const setActive = ({ isActive }) =>
   isActive ? styles.active : styles.menuList__itemLink;
 
 export const Menu = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  async function handleSignOut(e){
-    e.preventDefault()
+  async function handleSignOut(e) {
+    e.preventDefault();
 
     try {
-        const { error } = await supabase.auth.signOut({
-          })
+      const { error } = await supabase.auth.signOut({});
 
-      if (error) throw error
-      navigate('/login')
-
+      if (error) throw error;
+      navigate('/login');
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   }
 
