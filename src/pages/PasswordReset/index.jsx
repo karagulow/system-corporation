@@ -13,21 +13,34 @@ export const PasswordReset = ({ isEmail = false, isPassword = false }) => {
   const [passwordSecond, setPasswordSecond] = useState('');
   const [typeSecond, setTypeSecond] = useState('password');
   const [iconSecond, setIconSecond] = useState('eyeOff');
+  const [formData,setFormData] = useState({
+    email:'',password:''
+  })
 
-  // async function sendFormResetPassword(e){
-  //   e.preventDefault()
+  async function sendFormResetPassword(e){
+    e.preventDefault()
 
-  //   try {
-  //       const { data, error } = await supabase.auth.resetPasswordForEmail({
-  //           email: formData.email,
-  //           password: formData.password,
-  //         })
+    try {
+        const { error } = await supabase.auth.resetPasswordForEmail(formData.email,{
+            redirectTo: "localhost:3000/new-password?isPassword=true"
+          })
 
-  //     if (error) throw error
-  //   } catch (error) {
-  //     alert(error)
-  //   }
-  // }
+      if (error) throw error
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  function handleChange(event){
+    setFormData((prevFormData)=>{
+      return{
+        ...prevFormData,
+        [event.target.name]:event.target.value
+      }
+
+    })
+
+  }
 
   const handleTogglePasswordFirst = () => {
     if (typeFirst === 'password') {
@@ -141,13 +154,15 @@ export const PasswordReset = ({ isEmail = false, isPassword = false }) => {
         </Link>
         <h3 className={styles.resetBlock__title}>Восстановление пароля</h3>
         {isEmail && (
-          <form className={styles.resetBlock__form}>
+          <form className={styles.resetBlock__form} onSubmit={sendFormResetPassword}>
             <input
               className={styles.resetBlock__formEmail}
               type="email"
+              name='email'
               placeholder="Введите ваш email"
+              onChange={handleChange}
             />
-            <button type="button" className={styles.resetBlock__formBtn}>
+            <button type="sumbit" className={styles.resetBlock__formBtn}>
               Подтвердить
             </button>
           </form>
